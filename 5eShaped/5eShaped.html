@@ -309,7 +309,7 @@ var lowercaseDamageTypes = exports.lowercaseDamageTypes = function lowercaseDama
 };
 
 var round = exports.round = function round(n) {
-  var roundMultiplier = 1; // round to full number
+  var roundMultiplier = 2; // round to full number
   if (Math.abs(n) < 0.1) {
     roundMultiplier = 1000; // round to .001
   } else if (Math.abs(n) < 0.5) {
@@ -4075,10 +4075,10 @@ var convertDistance = exports.convertDistance = function convertDistance(data, f
   if ((0, _utilities.exists)(field) && (0, _utilities.exists)(data[field])) {
     if (data.distance_system === 'FEET') {
       // convert to feet
-      convertDistanceTypes(data, field, 3.280839895, ['meters', 'meter', 'm\\.', 'kilometers', 'kilometer']);
+      convertDistanceTypes(data, field, 3.3333333, ['meters', 'meter', 'm\\.', 'kilometers', 'kilometer']);
     } else if (data.distance_system === 'METERS') {
       // convert to meters
-      convertDistanceTypes(data, field, 0.3048, ['feet', 'foot', 'ft', 'ft\\.', 'miles', 'mile']);
+      convertDistanceTypes(data, field, 0.3, ['feet', 'foot', 'ft', 'ft\\.', 'miles', 'mile']);
     }
   }
 };
@@ -5841,10 +5841,10 @@ var changeWeightSystem = exports.changeWeightSystem = function changeWeightSyste
   if ((0, _utilities.exists)(weight) && localWeightSystem.toUpperCase() !== data.weight_system) {
     if (data.weight_system === 'POUNDS') {
       // convert to pounds
-      data[repString + '_weight'] = (0, _utilities.round)(weight * 2.204622621848776);
+      data[repString + '_weight'] = (0, _utilities.round)(weight * 2);
     } else if (data.weight_system === 'KILOGRAMS') {
       // convert to kilos
-      data[repString + '_weight'] = (0, _utilities.round)(weight * 0.45359237);
+      data[repString + '_weight'] = (0, _utilities.round)(weight * 0.5);
     }
   }
   data[repString + '_weight_system'] = data.weight_system;
